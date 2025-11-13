@@ -1,0 +1,30 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "brandmind-ai",
+  "compatibility_date": "2024-01-01",
+  "compatibility_flags": ["nodejs_compat"],
+  "pages_build_output_dir": "./dist",
+  
+  // D1 Database Configuration
+  // Note: Create database first with: npx wrangler d1 create brandmind-production
+  // Then update database_id below with the ID from the output
+  // For local development, use --local flag: npm run dev:sandbox
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "brandmind-production",
+      "database_id": "YOUR_DATABASE_ID_HERE"
+    }
+  ],
+  
+  // KV Namespace for session storage and rate limiting
+  // Create with: npx wrangler kv:namespace create brandmind_KV
+  // Then update id below
+  "kv_namespaces": [
+    {
+      "binding": "KV",
+      "id": "YOUR_KV_ID_HERE",
+      "preview_id": "YOUR_KV_PREVIEW_ID_HERE"
+    }
+  ]
+}
